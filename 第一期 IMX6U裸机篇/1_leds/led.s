@@ -1,5 +1,5 @@
 /**************************************************************
-Copyright © zhuyuxiang Co., Ltd. 1998-2020. All rights reserved.
+Copyright © zhuyuxiang. All rights reserved.
 文件名 : led.s
 作者 : 朱宇祥
 版本 : V1.0

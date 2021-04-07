@@ -3,7 +3,7 @@ SECTIONS{
 	.text :
 	{
 		start.o 
-		main.o 
+		led.o 
 		*(.text)
 	}
 	.rodata ALIGN(4) : {*(.rodata*)}     
