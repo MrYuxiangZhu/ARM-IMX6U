@@ -11,6 +11,8 @@ Copyright © zhuyuxiang. All rights reserved.
 #ifndef _LED_H
 #define _LED_H
 
+#include "imx6ul.h"
+
 /*
  *LED开关控制枚举
  */
