@@ -1,21 +1,26 @@
-#ifndef __BSP_LED_H
-#define __BSP_LED_H
-#include "imx6ul.h"
-/***************************************************************
-Copyright © zuozhongkai Co., Ltd. 1998-2019. All rights reserved.
-文件名	: 	 bsp_led.h
-作者	   : 左忠凯
-版本	   : V1.0
-描述	   : LED驱动头文件。
-其他	   : 无
-论坛 	   : www.openedv.com
-日志	   : 初版V1.0 2019/1/4 左忠凯创建
-***************************************************************/
+/**************************************************************
+Copyright © zhuyuxiang. All rights reserved.
+文件名 : led.h
+作者 : 朱宇祥
+版本 : V1.0
+描述 : 时钟GPIO1_IO03相关寄存器地址定义。
+其他 : 无
+论坛 : 
+日志 : 2021/4/6 朱宇祥创建
+**************************************************************/
+#ifndef _LED_H
+#define _LED_H
 
-#define LED0	0
+/*
+ *LED开关控制枚举
+ */
+typedef enum
+{
+	LED_ON = 0,
+	LED_OFF,
+}LED_STATE;
 
-/* 函数声明 */
 void led_init(void);
-void led_switch(int led, int status);
-#endif
+void led_control(LED_STATE led_ctrl);
 
+#endif
