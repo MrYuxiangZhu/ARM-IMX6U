@@ -81,7 +81,7 @@ void led_control(LED_STATE led_ctrl)
  * @param - n	: 要延时循环次数(空操作循环次数，模式延时)
  * @return 		: 无
  */
-void delay_short(uint32_t n)
+void delay_short(__IO uint32_t n)
 {
 	while(n--){}
 }
@@ -92,7 +92,7 @@ void delay_short(uint32_t n)
  * @param - n	: 要延时的ms数
  * @return 		: 无
  */
-void delay(uint32_t n)
+void delay(__IO uint32_t n)
 {
 	while(n--)
 	{
