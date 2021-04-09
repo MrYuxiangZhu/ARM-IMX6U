@@ -1,15 +1,14 @@
+/**************************************************************
+Copyright © zhuyuxiang. All rights reserved.
+文件名 : bsp_clk.c
+作者 : 朱宇祥
+版本 : V1.0
+描述 : 系统时钟驱动。
+其他 : 无
+论坛 : 
+日志 : 2021/4/9 朱宇祥创建
+**************************************************************/
 #include "bsp_clk.h"
-
-/***************************************************************
-Copyright © zuozhongkai Co., Ltd. 1998-2019. All rights reserved.
-文件名	: 	 bsp_clk.c
-作者	   : 左忠凯
-版本	   : V1.0
-描述	   : 系统时钟驱动。
-其他	   : 无
-论坛 	   : www.openedv.com
-日志	   : 初版V1.0 2019/1/4 左忠凯创建
-***************************************************************/
 
 /*
  * @description	: 使能I.MX6U所有外设时钟
@@ -18,12 +17,12 @@ Copyright © zuozhongkai Co., Ltd. 1998-2019. All rights reserved.
  */
 void clk_enable(void)
 {
-	CCM->CCGR0 = 0XFFFFFFFF;
-	CCM->CCGR1 = 0XFFFFFFFF;
-	CCM->CCGR2 = 0XFFFFFFFF;
-	CCM->CCGR3 = 0XFFFFFFFF;
-	CCM->CCGR4 = 0XFFFFFFFF;
-	CCM->CCGR5 = 0XFFFFFFFF;
-	CCM->CCGR6 = 0XFFFFFFFF;
+	CCM_CCGR0 = 0XFFFFFFFF;
+	CCM_CCGR1 = 0XFFFFFFFF;
+	CCM_CCGR2 = 0XFFFFFFFF;
+	CCM_CCGR3 = 0XFFFFFFFF;
+	CCM_CCGR4 = 0XFFFFFFFF;
+	CCM_CCGR5 = 0XFFFFFFFF;
+	CCM_CCGR6 = 0XFFFFFFFF;
 }
 

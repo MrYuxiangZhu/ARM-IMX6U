@@ -1,13 +1,13 @@
-/***************************************************************
-Copyright © zuozhongkai Co., Ltd. 1998-2019. All rights reserved.
-文件名	: 	 bsp_delay.c
-作者	   : 左忠凯
-版本	   : V1.0
-描述	   : 延时文件。
-其他	   : 无
-论坛 	   : www.openedv.com
-日志	   : 初版V1.0 2019/1/4 左忠凯创建
-***************************************************************/
+/**************************************************************
+Copyright © zhuyuxiang. All rights reserved.
+文件名 : bsp_delay.c
+作者 : 朱宇祥
+版本 : V1.0
+描述 : 延时文件。
+其他 : 无
+论坛 : 
+日志 : 2021/4/9 朱宇祥创建
+**************************************************************/
 #include "bsp_delay.h"
 
 /*
@@ -15,9 +15,9 @@ Copyright © zuozhongkai Co., Ltd. 1998-2019. All rights reserved.
  * @param - n	: 要延时循环次数(空操作循环次数，模式延时)
  * @return 		: 无
  */
-void delay_short(volatile unsigned int n)
+void delay_short(__IO uint32_t n)
 {
-	while(n--){}
+	while(n--) {}
 }
 
 /*
@@ -26,11 +26,11 @@ void delay_short(volatile unsigned int n)
  * @param - n	: 要延时的ms数
  * @return 		: 无
  */
-void delay(volatile unsigned int n)
+void delay(__IO uint32_t n)
 {
 	while(n--)
 	{
-		delay_short(0x7ff);
+		delay_short(0x7FF);
 	}
 }
 

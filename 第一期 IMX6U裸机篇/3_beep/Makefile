@@ -1,3 +1,13 @@
+###############################################################
+#Copyright © zhuyuxiang. All rights reserved.
+#文件名 : Makefile
+#作者 : 朱宇祥
+#版本 : V1.0
+#描述 : Makefile
+#其他 : 无
+#论坛 : 
+#日志 : 2021/4/9 朱宇祥创建
+###############################################################
 CROSS_COMPILE	?= arm-linux-gnueabihf-
 TARGET			?= beep
 
@@ -8,7 +18,8 @@ OBJDUMP			:= $(CROSS_COMPILE)objdump
 RM				:= rm -rf
 
 #头文件目录变量
-INCDIRS			:= bsp/clk \
+INCDIRS			:= imx6ul \
+				   bsp/clk \
 				   bsp/led \
 				   bsp/delay  \
 				   bsp/beep
