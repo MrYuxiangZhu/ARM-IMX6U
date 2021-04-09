@@ -22,13 +22,15 @@ INCDIRS			:= imx6ul \
 				   bsp/clk \
 				   bsp/led \
 				   bsp/delay  \
-				   bsp/beep
+				   bsp/beep \
+				   bsp/key
 #源文件目录变量
 SRCDIRS			:= project \
 				   bsp/clk \
 				   bsp/led \
 				   bsp/delay \
-				   bsp/beep
+				   bsp/beep \
+				   bsp/key
 
 #所有文件目录加上-I前缀
 INCLUDE			:= $(patsubst %, -I %, $(INCDIRS))
@@ -71,4 +73,4 @@ $(COBJS) : obj/%.o : %.c
 	$(CC) -Wall -nostdlib -c -O2 $(INCLUDE) -o $@ $<
 
 clean:
-	$(RM) $(TARGET).elf $(TARGET).dis $(TARGET).bin $(SOBJS) $(COBJS)
+	$(RM) $(TARGET).elf $(TARGET).dis $(TARGET).bin $(SOBJS) $(COBJS) load.imx

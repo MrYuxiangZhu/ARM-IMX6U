@@ -3,9 +3,7 @@ Copyright © zhuyuxiang. All rights reserved.
 文件名 : bsp_beep.c
 作者 : 朱宇祥
 版本 : V1.0
-描述 : I.MX6U开发板裸机实验2 C语言驱动蜂鸣器
-	   使用C语言来驱动开发板上的蜂鸣器，学习和掌握如何用C语言来
-	   完成对I.MX6U处理器的GPIO初始化和控制。
+描述 : 使用C语言来驱动开发板上的蜂鸣器，学习和掌握如何用C语言来完成对I.MX6U处理器的GPIO初始化和控制。
 其他 : 无
 论坛 : 
 日志 : 2021/4/9 朱宇祥创建
@@ -37,10 +35,12 @@ void beep_init(void)
 	IOMUXC_SW_PAD_CTL_PAD_SNVS_TAMPER1 = 0X000010B0;
 	
 	/*初始化GPIO*/
-	GPIO5_GDIR = 0X00000002;	/* GPIO5_IO01设置为输出 */
-	
+	GPIO5_GDIR &= ~(1 << GPIO_PIN_1); 	/* GPIO1_GDIR bit1位清零*/
+	GPIO5_GDIR |= (1 << GPIO_PIN_1);	/* GPIO1_GDIR bit1位置1，GPIO5_IO01设置为输出*/
+
 	/* 设置GPIO5_IO01输出高电平，关闭蜂鸣器 */
-	GPIO5_DR = 0X00000002;
+	GPIO5_DR &= ~(1 << GPIO_PIN_1);
+	GPIO5_DR |= (1 << GPIO_PIN_1);
 }
 
 /*

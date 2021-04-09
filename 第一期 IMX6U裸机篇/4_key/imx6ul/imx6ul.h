@@ -13,6 +13,42 @@ Copyright © zhuyuxiang. All rights reserved.
 
 #include "imx6ul_type.h"
 
+typedef enum
+{
+    GPIO_PIN_0  = 0,
+    GPIO_PIN_1  = 1,
+    GPIO_PIN_2  = 2,
+    GPIO_PIN_3  = 3,
+    GPIO_PIN_4  = 4,
+    GPIO_PIN_5  = 5,
+    GPIO_PIN_6  = 6,
+    GPIO_PIN_7  = 7,
+    GPIO_PIN_8  = 8,
+    GPIO_PIN_9  = 9,
+    GPIO_PIN_10 = 10,
+    GPIO_PIN_11 = 11,
+    GPIO_PIN_12 = 12,
+    GPIO_PIN_13 = 13,
+    GPIO_PIN_14 = 14,
+    GPIO_PIN_15 = 15,
+    GPIO_PIN_16 = 16,
+    GPIO_PIN_17 = 17,
+    GPIO_PIN_18 = 18,
+    GPIO_PIN_19 = 19,
+    GPIO_PIN_20 = 20,
+    GPIO_PIN_21 = 21,
+    GPIO_PIN_22 = 22,
+    GPIO_PIN_23 = 23,
+    GPIO_PIN_24 = 24,
+    GPIO_PIN_25 = 25,
+    GPIO_PIN_26 = 26,
+    GPIO_PIN_27 = 27,
+    GPIO_PIN_28 = 28,
+    GPIO_PIN_29 = 29,
+    GPIO_PIN_30 = 30,
+    GPIO_PIN_31 = 31,
+}GPIO_PIN_NUM;
+
 /* 
  * CCM相关寄存器地址 
  */
@@ -32,6 +68,8 @@ Copyright © zhuyuxiang. All rights reserved.
 #define IOMUXC_SW_PAD_CTL_PAD_SNVS_TAMPER1          *((__IO uint32_t *)0X020E02AC)
 #define IOMUXC_SW_MUX_CTL_PAD_GPIO1_IO03 	        *((__IO uint32_t *)0X020E0068)
 #define IOMUXC_SW_PAD_CTL_PAD_GPIO1_IO03 	        *((__IO uint32_t *)0X020E02F4)
+#define IOMUXC_SW_MUX_CTL_PAD_UART1_CTS_B           *((__IO uint32_t *)0X020E008C)
+#define IOMUXC_SW_PAD_CTL_PAD_UART1_CTS_B           *((__IO uint32_t *)0X020E0318)
 
 /* 
  * GPIO1相关寄存器地址 

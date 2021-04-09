@@ -10,7 +10,7 @@ Disassembly of section .text:
 87800008:	e3800013 	orr	r0, r0, #19
 8780000c:	e129f000 	msr	CPSR_fc, r0
 87800010:	e51fd000 	ldr	sp, [pc, #-0]	; 87800018 <_start+0x18>
-87800014:	ea00005d 	b	87800190 <__main_from_arm>
+87800014:	ea000089 	b	87800240 <__main_from_arm>
 87800018:	80200000 	eorhi	r0, r0, r0
 8780001c:	00001e41 	andeq	r1, r0, r1, asr #28
 87800020:	61656100 	cmnvs	r5, r0, lsl #2
@@ -49,142 +49,217 @@ Disassembly of section .text:
 8780008a:	4770      	bx	lr
 
 8780008c <led_init>:
-8780008c:	2068      	movs	r0, #104	; 0x68
+8780008c:	2368      	movs	r3, #104	; 0x68
 8780008e:	f44f 713d 	mov.w	r1, #756	; 0x2f4
 87800092:	f24c 0204 	movw	r2, #49156	; 0xc004
-87800096:	f44f 4340 	mov.w	r3, #49152	; 0xc000
-8780009a:	b4f0      	push	{r4, r5, r6, r7}
-8780009c:	f2c0 200e 	movt	r0, #526	; 0x20e
-878000a0:	2705      	movs	r7, #5
-878000a2:	f241 06b0 	movw	r6, #4272	; 0x10b0
-878000a6:	2508      	movs	r5, #8
-878000a8:	2400      	movs	r4, #0
-878000aa:	f2c0 210e 	movt	r1, #526	; 0x20e
-878000ae:	f2c0 2209 	movt	r2, #521	; 0x209
-878000b2:	f2c0 2309 	movt	r3, #521	; 0x209
-878000b6:	6007      	str	r7, [r0, #0]
-878000b8:	600e      	str	r6, [r1, #0]
-878000ba:	6015      	str	r5, [r2, #0]
-878000bc:	601c      	str	r4, [r3, #0]
-878000be:	bcf0      	pop	{r4, r5, r6, r7}
-878000c0:	4770      	bx	lr
-878000c2:	bf00      	nop
-
-878000c4 <led_control>:
-878000c4:	b158      	cbz	r0, 878000de <led_control+0x1a>
-878000c6:	2801      	cmp	r0, #1
-878000c8:	d108      	bne.n	878000dc <led_control+0x18>
-878000ca:	f44f 4340 	mov.w	r3, #49152	; 0xc000
-878000ce:	f2c0 2309 	movt	r3, #521	; 0x209
+87800096:	b410      	push	{r4}
+87800098:	f2c0 2209 	movt	r2, #521	; 0x209
+8780009c:	f2c0 230e 	movt	r3, #526	; 0x20e
+878000a0:	2405      	movs	r4, #5
+878000a2:	f2c0 210e 	movt	r1, #526	; 0x20e
+878000a6:	f241 00b0 	movw	r0, #4272	; 0x10b0
+878000aa:	601c      	str	r4, [r3, #0]
+878000ac:	6008      	str	r0, [r1, #0]
+878000ae:	f44f 4340 	mov.w	r3, #49152	; 0xc000
+878000b2:	6811      	ldr	r1, [r2, #0]
+878000b4:	f2c0 2309 	movt	r3, #521	; 0x209
+878000b8:	f85d 4b04 	ldr.w	r4, [sp], #4
+878000bc:	f021 0108 	bic.w	r1, r1, #8
+878000c0:	6011      	str	r1, [r2, #0]
+878000c2:	6811      	ldr	r1, [r2, #0]
+878000c4:	f041 0108 	orr.w	r1, r1, #8
+878000c8:	6011      	str	r1, [r2, #0]
+878000ca:	681a      	ldr	r2, [r3, #0]
+878000cc:	f022 0208 	bic.w	r2, r2, #8
+878000d0:	601a      	str	r2, [r3, #0]
 878000d2:	681a      	ldr	r2, [r3, #0]
 878000d4:	f042 0208 	orr.w	r2, r2, #8
 878000d8:	601a      	str	r2, [r3, #0]
 878000da:	4770      	bx	lr
-878000dc:	4770      	bx	lr
-878000de:	f44f 4340 	mov.w	r3, #49152	; 0xc000
-878000e2:	f2c0 2309 	movt	r3, #521	; 0x209
-878000e6:	681a      	ldr	r2, [r3, #0]
-878000e8:	f022 0208 	bic.w	r2, r2, #8
-878000ec:	601a      	str	r2, [r3, #0]
-878000ee:	4770      	bx	lr
 
-878000f0 <delay_short>:
-878000f0:	b082      	sub	sp, #8
-878000f2:	9001      	str	r0, [sp, #4]
-878000f4:	9b01      	ldr	r3, [sp, #4]
-878000f6:	1e5a      	subs	r2, r3, #1
-878000f8:	9201      	str	r2, [sp, #4]
-878000fa:	2b00      	cmp	r3, #0
-878000fc:	d1fa      	bne.n	878000f4 <delay_short+0x4>
-878000fe:	b002      	add	sp, #8
-87800100:	4770      	bx	lr
-87800102:	bf00      	nop
+878000dc <led_control>:
+878000dc:	b158      	cbz	r0, 878000f6 <led_control+0x1a>
+878000de:	2801      	cmp	r0, #1
+878000e0:	d108      	bne.n	878000f4 <led_control+0x18>
+878000e2:	f44f 4340 	mov.w	r3, #49152	; 0xc000
+878000e6:	f2c0 2309 	movt	r3, #521	; 0x209
+878000ea:	681a      	ldr	r2, [r3, #0]
+878000ec:	f042 0208 	orr.w	r2, r2, #8
+878000f0:	601a      	str	r2, [r3, #0]
+878000f2:	4770      	bx	lr
+878000f4:	4770      	bx	lr
+878000f6:	f44f 4340 	mov.w	r3, #49152	; 0xc000
+878000fa:	f2c0 2309 	movt	r3, #521	; 0x209
+878000fe:	681a      	ldr	r2, [r3, #0]
+87800100:	f022 0208 	bic.w	r2, r2, #8
+87800104:	601a      	str	r2, [r3, #0]
+87800106:	4770      	bx	lr
 
-87800104 <delay>:
-87800104:	b082      	sub	sp, #8
-87800106:	9001      	str	r0, [sp, #4]
-87800108:	9b01      	ldr	r3, [sp, #4]
-8780010a:	1e5a      	subs	r2, r3, #1
-8780010c:	9201      	str	r2, [sp, #4]
-8780010e:	b153      	cbz	r3, 87800126 <delay+0x22>
-87800110:	f240 73ff 	movw	r3, #2047	; 0x7ff
-87800114:	461a      	mov	r2, r3
-87800116:	3b01      	subs	r3, #1
-87800118:	2a00      	cmp	r2, #0
-8780011a:	d1fb      	bne.n	87800114 <delay+0x10>
-8780011c:	9b01      	ldr	r3, [sp, #4]
-8780011e:	1e5a      	subs	r2, r3, #1
-87800120:	9201      	str	r2, [sp, #4]
-87800122:	2b00      	cmp	r3, #0
-87800124:	d1f4      	bne.n	87800110 <delay+0xc>
-87800126:	b002      	add	sp, #8
-87800128:	4770      	bx	lr
-8780012a:	bf00      	nop
+87800108 <delay_short>:
+87800108:	b082      	sub	sp, #8
+8780010a:	9001      	str	r0, [sp, #4]
+8780010c:	9b01      	ldr	r3, [sp, #4]
+8780010e:	1e5a      	subs	r2, r3, #1
+87800110:	9201      	str	r2, [sp, #4]
+87800112:	2b00      	cmp	r3, #0
+87800114:	d1fa      	bne.n	8780010c <delay_short+0x4>
+87800116:	b002      	add	sp, #8
+87800118:	4770      	bx	lr
+8780011a:	bf00      	nop
 
-8780012c <beep_init>:
-8780012c:	b470      	push	{r4, r5, r6}
-8780012e:	f44f 702b 	mov.w	r0, #684	; 0x2ac
-87800132:	2420      	movs	r4, #32
-87800134:	f24c 0104 	movw	r1, #49156	; 0xc004
-87800138:	f44f 4340 	mov.w	r3, #49152	; 0xc000
-8780013c:	f2c0 240e 	movt	r4, #526	; 0x20e
-87800140:	2605      	movs	r6, #5
-87800142:	f241 05b0 	movw	r5, #4272	; 0x10b0
-87800146:	2202      	movs	r2, #2
-87800148:	f2c0 200e 	movt	r0, #526	; 0x20e
-8780014c:	f2c0 210a 	movt	r1, #522	; 0x20a
-87800150:	f2c0 230a 	movt	r3, #522	; 0x20a
-87800154:	6026      	str	r6, [r4, #0]
-87800156:	6005      	str	r5, [r0, #0]
-87800158:	600a      	str	r2, [r1, #0]
-8780015a:	bc70      	pop	{r4, r5, r6}
-8780015c:	601a      	str	r2, [r3, #0]
-8780015e:	4770      	bx	lr
+8780011c <delay>:
+8780011c:	b082      	sub	sp, #8
+8780011e:	9001      	str	r0, [sp, #4]
+87800120:	9b01      	ldr	r3, [sp, #4]
+87800122:	1e5a      	subs	r2, r3, #1
+87800124:	9201      	str	r2, [sp, #4]
+87800126:	b153      	cbz	r3, 8780013e <delay+0x22>
+87800128:	f240 73ff 	movw	r3, #2047	; 0x7ff
+8780012c:	461a      	mov	r2, r3
+8780012e:	3b01      	subs	r3, #1
+87800130:	2a00      	cmp	r2, #0
+87800132:	d1fb      	bne.n	8780012c <delay+0x10>
+87800134:	9b01      	ldr	r3, [sp, #4]
+87800136:	1e5a      	subs	r2, r3, #1
+87800138:	9201      	str	r2, [sp, #4]
+8780013a:	2b00      	cmp	r3, #0
+8780013c:	d1f4      	bne.n	87800128 <delay+0xc>
+8780013e:	b002      	add	sp, #8
+87800140:	4770      	bx	lr
+87800142:	bf00      	nop
 
-87800160 <beep_control>:
-87800160:	b158      	cbz	r0, 8780017a <beep_control+0x1a>
-87800162:	2801      	cmp	r0, #1
-87800164:	d108      	bne.n	87800178 <beep_control+0x18>
+87800144 <beep_init>:
+87800144:	2320      	movs	r3, #32
+87800146:	f44f 712b 	mov.w	r1, #684	; 0x2ac
+8780014a:	f24c 0204 	movw	r2, #49156	; 0xc004
+8780014e:	b410      	push	{r4}
+87800150:	f2c0 220a 	movt	r2, #522	; 0x20a
+87800154:	f2c0 230e 	movt	r3, #526	; 0x20e
+87800158:	2405      	movs	r4, #5
+8780015a:	f2c0 210e 	movt	r1, #526	; 0x20e
+8780015e:	f241 00b0 	movw	r0, #4272	; 0x10b0
+87800162:	601c      	str	r4, [r3, #0]
+87800164:	6008      	str	r0, [r1, #0]
 87800166:	f44f 4340 	mov.w	r3, #49152	; 0xc000
-8780016a:	f2c0 230a 	movt	r3, #522	; 0x20a
-8780016e:	681a      	ldr	r2, [r3, #0]
-87800170:	f042 0202 	orr.w	r2, r2, #2
-87800174:	601a      	str	r2, [r3, #0]
-87800176:	4770      	bx	lr
-87800178:	4770      	bx	lr
-8780017a:	f44f 4340 	mov.w	r3, #49152	; 0xc000
-8780017e:	f2c0 230a 	movt	r3, #522	; 0x20a
+8780016a:	6811      	ldr	r1, [r2, #0]
+8780016c:	f2c0 230a 	movt	r3, #522	; 0x20a
+87800170:	f85d 4b04 	ldr.w	r4, [sp], #4
+87800174:	f021 0102 	bic.w	r1, r1, #2
+87800178:	6011      	str	r1, [r2, #0]
+8780017a:	6811      	ldr	r1, [r2, #0]
+8780017c:	f041 0102 	orr.w	r1, r1, #2
+87800180:	6011      	str	r1, [r2, #0]
 87800182:	681a      	ldr	r2, [r3, #0]
 87800184:	f022 0202 	bic.w	r2, r2, #2
 87800188:	601a      	str	r2, [r3, #0]
-8780018a:	4770      	bx	lr
-8780018c:	0000      	movs	r0, r0
-	...
+8780018a:	681a      	ldr	r2, [r3, #0]
+8780018c:	f042 0202 	orr.w	r2, r2, #2
+87800190:	601a      	str	r2, [r3, #0]
+87800192:	4770      	bx	lr
 
-87800190 <__main_from_arm>:
-87800190:	e51ff004 	ldr	pc, [pc, #-4]	; 87800194 <__main_from_arm+0x4>
-87800194:	87800199 			; <UNDEFINED> instruction: 0x87800199
+87800194 <beep_control>:
+87800194:	b158      	cbz	r0, 878001ae <beep_control+0x1a>
+87800196:	2801      	cmp	r0, #1
+87800198:	d108      	bne.n	878001ac <beep_control+0x18>
+8780019a:	f44f 4340 	mov.w	r3, #49152	; 0xc000
+8780019e:	f2c0 230a 	movt	r3, #522	; 0x20a
+878001a2:	681a      	ldr	r2, [r3, #0]
+878001a4:	f042 0202 	orr.w	r2, r2, #2
+878001a8:	601a      	str	r2, [r3, #0]
+878001aa:	4770      	bx	lr
+878001ac:	4770      	bx	lr
+878001ae:	f44f 4340 	mov.w	r3, #49152	; 0xc000
+878001b2:	f2c0 230a 	movt	r3, #522	; 0x20a
+878001b6:	681a      	ldr	r2, [r3, #0]
+878001b8:	f022 0202 	bic.w	r2, r2, #2
+878001bc:	601a      	str	r2, [r3, #0]
+878001be:	4770      	bx	lr
+
+878001c0 <key_init>:
+878001c0:	218c      	movs	r1, #140	; 0x8c
+878001c2:	f44f 7246 	mov.w	r2, #792	; 0x318
+878001c6:	f24c 0304 	movw	r3, #49156	; 0xc004
+878001ca:	b410      	push	{r4}
+878001cc:	f2c0 220e 	movt	r2, #526	; 0x20e
+878001d0:	2405      	movs	r4, #5
+878001d2:	f2c0 2309 	movt	r3, #521	; 0x209
+878001d6:	f2c0 210e 	movt	r1, #526	; 0x20e
+878001da:	f24f 0080 	movw	r0, #61568	; 0xf080
+878001de:	600c      	str	r4, [r1, #0]
+878001e0:	6010      	str	r0, [r2, #0]
+878001e2:	681a      	ldr	r2, [r3, #0]
+878001e4:	f85d 4b04 	ldr.w	r4, [sp], #4
+878001e8:	f422 2280 	bic.w	r2, r2, #262144	; 0x40000
+878001ec:	601a      	str	r2, [r3, #0]
+878001ee:	4770      	bx	lr
+
+878001f0 <key_get_value>:
+878001f0:	b570      	push	{r4, r5, r6, lr}
+878001f2:	f240 248c 	movw	r4, #652	; 0x28c
+878001f6:	f2c8 7480 	movt	r4, #34688	; 0x8780
+878001fa:	7823      	ldrb	r3, [r4, #0]
+878001fc:	2b01      	cmp	r3, #1
+878001fe:	d00b      	beq.n	87800218 <key_get_value+0x28>
+87800200:	f44f 4340 	mov.w	r3, #49152	; 0xc000
+87800204:	f2c0 2309 	movt	r3, #521	; 0x209
+87800208:	6818      	ldr	r0, [r3, #0]
+8780020a:	f3c0 4080 	ubfx	r0, r0, #18, #1
+8780020e:	b110      	cbz	r0, 87800216 <key_get_value+0x26>
+87800210:	2000      	movs	r0, #0
+87800212:	2301      	movs	r3, #1
+87800214:	7023      	strb	r3, [r4, #0]
+87800216:	bd70      	pop	{r4, r5, r6, pc}
+87800218:	f44f 4640 	mov.w	r6, #49152	; 0xc000
+8780021c:	f2c0 2609 	movt	r6, #521	; 0x209
+87800220:	6835      	ldr	r5, [r6, #0]
+87800222:	f3c5 4580 	ubfx	r5, r5, #18, #1
+87800226:	2d00      	cmp	r5, #0
+87800228:	d1ea      	bne.n	87800200 <key_get_value+0x10>
+8780022a:	200a      	movs	r0, #10
+8780022c:	f7ff ff76 	bl	8780011c <delay>
+87800230:	7025      	strb	r5, [r4, #0]
+87800232:	6830      	ldr	r0, [r6, #0]
+87800234:	f3c0 4080 	ubfx	r0, r0, #18, #1
+87800238:	f080 0001 	eor.w	r0, r0, #1
+8780023c:	bd70      	pop	{r4, r5, r6, pc}
+8780023e:	bf00      	nop
+
+87800240 <__main_from_arm>:
+87800240:	e51ff004 	ldr	pc, [pc, #-4]	; 87800244 <__main_from_arm+0x4>
+87800244:	87800249 	strhi	r0, [r0, r9, asr #4]
 
 Disassembly of section .text.startup:
 
-87800198 <main>:
-87800198:	b508      	push	{r3, lr}
-8780019a:	f7ff ff4f 	bl	8780003c <clk_enable>
-8780019e:	f7ff ff75 	bl	8780008c <led_init>
-878001a2:	f7ff ffc3 	bl	8780012c <beep_init>
-878001a6:	2000      	movs	r0, #0
-878001a8:	f7ff ff8c 	bl	878000c4 <led_control>
-878001ac:	2000      	movs	r0, #0
-878001ae:	f7ff ffd7 	bl	87800160 <beep_control>
-878001b2:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
-878001b6:	f7ff ffa5 	bl	87800104 <delay>
-878001ba:	2001      	movs	r0, #1
-878001bc:	f7ff ff82 	bl	878000c4 <led_control>
-878001c0:	2001      	movs	r0, #1
-878001c2:	f7ff ffcd 	bl	87800160 <beep_control>
-878001c6:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
-878001ca:	f7ff ff9b 	bl	87800104 <delay>
-878001ce:	e7ea      	b.n	878001a6 <main+0xe>
+87800248 <main>:
+87800248:	b510      	push	{r4, lr}
+8780024a:	2400      	movs	r4, #0
+8780024c:	f7ff fef6 	bl	8780003c <clk_enable>
+87800250:	f7ff ff1c 	bl	8780008c <led_init>
+87800254:	f7ff ff76 	bl	87800144 <beep_init>
+87800258:	f7ff ffb2 	bl	878001c0 <key_init>
+8780025c:	e007      	b.n	8780026e <main+0x26>
+8780025e:	f7ff ff3d 	bl	878000dc <led_control>
+87800262:	2000      	movs	r0, #0
+87800264:	f7ff ff96 	bl	87800194 <beep_control>
+87800268:	200a      	movs	r0, #10
+8780026a:	f7ff ff57 	bl	8780011c <delay>
+8780026e:	f7ff ffbf 	bl	878001f0 <key_get_value>
+87800272:	b108      	cbz	r0, 87800278 <main+0x30>
+87800274:	f084 0401 	eor.w	r4, r4, #1
+87800278:	2000      	movs	r0, #0
+8780027a:	2c00      	cmp	r4, #0
+8780027c:	d1ef      	bne.n	8780025e <main+0x16>
+8780027e:	2001      	movs	r0, #1
+87800280:	f7ff ff2c 	bl	878000dc <led_control>
+87800284:	2001      	movs	r0, #1
+87800286:	f7ff ff85 	bl	87800194 <beep_control>
+8780028a:	e7ed      	b.n	87800268 <main+0x20>
+
+Disassembly of section .data:
+
+8780028c <release.4196>:
+8780028c:	地址 0x000000008780028c 越界。
+
 
 Disassembly of section .comment:
 
